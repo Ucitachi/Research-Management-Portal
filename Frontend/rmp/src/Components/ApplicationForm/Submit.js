@@ -3,6 +3,7 @@ import axios from 'axios';
 function SubmitApplication({ data, onPrev }) {
   const handleSubmit = async () => {
     try {
+      console.log(data);
       const response = await axios.post('http://localhost:5000/ApplicationSubmission', data);
       console.log('Server response:', response.data);
 

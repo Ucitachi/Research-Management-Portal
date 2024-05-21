@@ -76,7 +76,7 @@ app.post('/login', async (req, res) => {
 
 app.post('/ApplicationSubmission', async (req, res) => {
 
-  console.log(req);
+  console.log(req.body);
 
 });
 

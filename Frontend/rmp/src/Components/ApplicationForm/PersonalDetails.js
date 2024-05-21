@@ -1,46 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function PersonalDetails({ data, setData, onNext }) {
-  const [firstName, setFirstName] = useState(data.firstName || '');
-  const [lastName, setLastName] = useState(data.lastName || '');
-  const [email, setEmail] = useState(data.email || '');
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setData({ ...data, firstName, lastName, email });
-    onNext();
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
   };
 
   return (
     <div>
-      <h2>Step 1: Personal Details</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="firstName">First Name:</label>
-        <input
-          type="text"
-          id="firstName"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-        <label htmlFor="lastName">Last Name:</label>
-        <input
-          type="text"
-          id="lastName"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <button type="submit">Next</button>
+      <h2>Personal Details</h2>
+      <form>
+        <label>
+          Full Name Of Applicant:
+          <input type="text" name="fullName" value={data.fullName || ''} onChange={handleChange} />
+        </label>
+        <label>
+          Department Applied For:
+          <input type="text" name="department" value={data.department || ''} onChange={handleChange} />
+        </label>
+        <label>
+          Area Of Research:
+          <input type="text" name="researchArea" value={data.researchArea || ''} onChange={handleChange} />
+        </label>
+        <label>
+          Ph.D for the year:
+          <input type="text" name="phdYear" value={data.phdYear || ''} onChange={handleChange} />
+        </label>
+        <button type="button" onClick={onNext}>Next</button>
       </form>
     </div>
   );
 }
 
 export default PersonalDetails;
-  

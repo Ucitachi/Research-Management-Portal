@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PersonalDetails from './PersonalDetails';
+import AdmissionForm from './AAdmissionForm';
 import EducationDetails from './EducationalDetails';
+import ProfessionalDetails from './ProfessionalDetails';
 import SubmitApplication from './Submit';
 
 function ApplicationForm() {
@@ -21,7 +23,7 @@ function ApplicationForm() {
         <PersonalDetails data={data} setData={setData} onNext={handleNext} />
       )}
       {step === 2 && (
-        <EducationDetails
+        <AdmissionForm
           data={data}
           setData={setData}
           onNext={handleNext}
@@ -29,6 +31,22 @@ function ApplicationForm() {
         />
       )}
       {step === 3 && (
+        <EducationDetails
+          data={data}
+          setData={setData}
+          onNext={handleNext}
+          onPrev={handlePrev}
+        />
+      )}
+      {step === 4 && (
+        <ProfessionalDetails
+          data={data}
+          setData={setData}
+          onNext={handleNext}
+          onPrev={handlePrev}
+        />
+      )}
+      {step === 5 && (
         <SubmitApplication data={data} onPrev={handlePrev} />
       )}
     </div>
