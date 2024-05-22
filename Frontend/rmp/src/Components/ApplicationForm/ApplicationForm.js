@@ -3,6 +3,8 @@ import PersonalDetails from './PersonalDetails';
 import AdmissionForm from './AAdmissionForm';
 import EducationDetails from './EducationalDetails';
 import ProfessionalDetails from './ProfessionalDetails';
+import Declaration from './Declaration';
+import UploadDocuments from './UploadDocuments';
 import SubmitApplication from './Submit';
 
 function ApplicationForm() {
@@ -47,6 +49,22 @@ function ApplicationForm() {
         />
       )}
       {step === 5 && (
+        <Declaration
+          data={data}
+          setData={setData}
+          onNext={handleNext}
+          onPrev={handlePrev}
+        />
+      )}
+      {step === 6 && (
+        <UploadDocuments
+          data={data}
+          setData={setData}
+          onNext={handleNext}
+          onPrev={handlePrev}
+        />
+      )}
+      {step === 7 && (
         <SubmitApplication data={data} onPrev={handlePrev} />
       )}
     </div>
