@@ -13,10 +13,10 @@ app.use(cors());
 app.use(express.json());
 
 const databaseConnectionConfig = {
-  host: 'localhost',
-  user: 'root',
-  password: 'Gambling@24',
-  database: 'rmp'
+  host: process.env.DB_HOST
+  user: process.env.DB_USER
+  password: process.env.DB_PASSWORD
+  database: process.env.DB_DATABASE
 };
 
 let connection; // Declare a variable to store the connection
