@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie'; 
+import Modal from './Modal';
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [role, setUserrole] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     
     // Validation
     if (!username || !password || !role) {
-      alert('Please fill in all fields');
+      setModalMessage('Please fill in all fields');
+      setIsModalOpen(true);
       return;
     }
 
@@ -42,6 +46,10 @@ function Login() {
     // history.push('/login');
   };
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="login-container">
       <h1>Login</h1>
@@ -69,6 +77,7 @@ function Login() {
         </select>
         <button type="submit">Login</button>
       </form>
+      {isModalOpen && <Modal message={modalMessage} onClose={closeModal} />}
       <button onClick={handleLogout}>Logout</button>
     </div>
   );
